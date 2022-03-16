@@ -14,8 +14,15 @@ const (
 	IDENT = "IDENT" // add, foobar
 	INT   = "INT"   // 1,2,3
 
-	ASSIGN = "="
-	PLUS   = "+"
+	ASSIGN   = "="
+	PLUS     = "+"
+	MINUS    = "-"
+	BANG     = "!"
+	ASTERISK = "*"
+	SLASH    = "/"
+
+	LT = "<"
+	RT = ">"
 
 	COMMA     = ","
 	SEMICOLON = ";"

@@ -2,34 +2,42 @@ package parser
 
 import (
 	"testing"
+
 	"github.com/keisuke713/monkey/ast"
 	"github.com/keisuke713/monkey/lexer"
 )
 
 func TestLetStatements(t *testing.T) {
+	// input := `
+	// let x = 5;
+	// let y = 10;
+	// let foobar = 838383;
+	// `
+
+	// あえて通らないようのテスト
 	input := `
-	let x = 5;
-	let y = 10;
-	let foobar = 838383;
+	let y = 3;
 	`
 
 	l := lexer.New(input)
 	p := New(l)
 
 	program := p.ParserProgram()
+	checkParserErrors(t, p)
 	if program == nil {
 		t.Fatalf("ParseProgram() returned nil")
 	}
-	if len(program.Statements) != 3 {
+	// inputの文の数に比例するから3とか1って
+	if len(program.Statements) != 1 {
 		t.Fatalf("program.Statemnts does not contain 3 statements. got=%d", len(program.Statements))
 	}
 
 	tests := []struct{
 		expectedIdentifier string
 	}{
-		{"x"},
+		// {"x"},
 		{"y"},
-		{"foobar"},
+		// {"foobar"},
 	}
 
 	for i, tt := range tests {
@@ -62,4 +70,17 @@ func testLetStatement(t *testing.T, s ast.Statement, name string) bool {
 	}
 
 	return true
+}
+
+func checkParserErrors(t *testing.T, p *Parser) {
+	errors := p.Errors()
+	if len(errors) == 0 {
+		return
+	}
+
+	t.Errorf("parser has %d errors", len(errors))
+	for _, msg := range errors {
+		t.Errorf("parser error: %q", msg)
+	}
+	t.FailNow()
 }

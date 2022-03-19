@@ -19,7 +19,7 @@ type Parser struct {
 
 func New(l *lexer.Lexer) *Parser {
 	p := &Parser{
-		l: l,
+		l:      l,
 		errors: []string{},
 	}
 
@@ -30,7 +30,7 @@ func New(l *lexer.Lexer) *Parser {
 }
 
 func (p *Parser) nextToken() {
-	p.curToken  = p.peekToken
+	p.curToken = p.peekToken
 	p.peekToken = p.l.NextToken()
 }
 

@@ -2,17 +2,29 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"os/user"
-	"github.com/keisuke713/monkey/repl"
+	_ "os/user"
+
+	"github.com/keisuke713/monkey/lexer"
+	"github.com/keisuke713/monkey/parser"
+	_ "github.com/keisuke713/monkey/repl"
 )
 
 func main() {
-	user, err := user.Current()
-	if err != nil {
-		panic(err)
+	l := lexer.New("5 * 5 - 10")
+	p := parser.New(l)
+	if program := p.ParserProgram(); program != nil {
+		fmt.Println("d")
+		// fmt.Print(program.Statements)
 	}
-	fmt.Printf("Hello %s! this is the Monkey programming language!\n",user.Username)
-	fmt.Println("Feel free to type in commands")
-	repl.Start(os.Stdin, os.Stdout)
+	// ex) b ./main.go:16
+
+	// fmt.Println(program.String())
+
+	// user, err := user.Current()
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Printf("Hello %s! this is the Monkey programming language!\n",user.Username)
+	// fmt.Println("Feel free to type in commands")
+	// repl.Start(os.Stdin, os.Stdout)
 }

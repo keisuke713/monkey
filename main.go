@@ -10,11 +10,15 @@ import (
 )
 
 func main() {
-	l := lexer.New("5 * 5 - 10")
+	input := `
+	if (x < y) {
+		4
+	}
+	`
+	l := lexer.New(input)
 	p := parser.New(l)
 	if program := p.ParserProgram(); program != nil {
-		fmt.Println("d")
-		// fmt.Print(program.Statements)
+		fmt.Print(program.Statements)
 	}
 	// ex) b ./main.go:16
 

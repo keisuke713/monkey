@@ -2,8 +2,9 @@ package ast
 
 import (
 	"bytes"
-	"monkey/token"
 	"strings"
+
+	"github.com/keisuke713/monkey/token"
 )
 
 // The base Node interface

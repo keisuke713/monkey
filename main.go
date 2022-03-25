@@ -10,11 +10,7 @@ import (
 )
 
 func main() {
-	input := `
-	if (x < y) {
-		4
-	}
-	`
+	input := "a + add(b * c) + d"
 	l := lexer.New(input)
 	p := parser.New(l)
 	if program := p.ParserProgram(); program != nil {

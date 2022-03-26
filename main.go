@@ -7,7 +7,7 @@ import (
 
 	"github.com/keisuke713/monkey/lexer"
 	"github.com/keisuke713/monkey/parser"
-	_ "github.com/keisuke713/repl"
+	_ "github.com/keisuke713/monkey/repl"
 )
 
 func main() {

@@ -5,10 +5,9 @@ import (
 	"os"
 	"os/user"
 
-	"github.com/keisuke713/monkey/repl"
 	_ "github.com/keisuke713/monkey/lexer"
 	_ "github.com/keisuke713/monkey/parser"
-	_ "github.com/keisuke713/monkey/repl"
+	"github.com/keisuke713/monkey/repl"
 )
 
 func main() {

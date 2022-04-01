@@ -298,6 +298,10 @@ func TestBuiltinFunctions(t *testing.T) {
 		{`len("one", "two")`, "wrong number of arguments. got=2, want=1"},
 		{`len([])`, 0},
 		{`len([1, 2, 3])`, 3},
+		{`first([])`, nil},
+		{`first([1, 2, 3])`, 1},
+		{`let myArray = [1, 2, 3]; let restArray = rest(myArray); first(restArray);`, 2},
+		{`let myArray = []; let newArray = push(myArray, 1); newArray[0];`, 1},
 	}
 
 	for _, tt := range tests {
